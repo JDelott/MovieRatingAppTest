@@ -1,8 +1,17 @@
 import { Grid, Header, Form, Segment, Button } from "semantic-ui-react";
+import { useMutation } from "@tanstack/react-query"
+import { mutationLogin } from "./mutation";
 
 
 export const Auth = () => {
-    const handleLogin = () => {};
+
+    const { data, mutate  } = useMutation({mutationKey: ["login"], mutationFn: mutationLogin  });
+
+    const handleLogin = async () => {
+        await mutate();
+        localStorage.setItem("guest_session_id", data.guest_session_id);
+
+    };
     return (
         <Grid textAlign="center" verticalAlign="middle" style= {{ height: "100vh" }}>
             <Grid.Column style={{maxWidth: 450 }}>
