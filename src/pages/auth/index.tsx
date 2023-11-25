@@ -5,7 +5,10 @@ import { mutationLogin } from "./mutation";
 
 export const Auth = () => {
 
-    const { data, mutate  } = useMutation({mutationKey: ["login"], mutationFn: mutationLogin  });
+    const { data, mutate  } = useMutation({
+        mutationKey: ["login"], 
+        mutationFn: mutationLogin,  
+    });
 
     const handleLogin = async () => {
         await mutate();
